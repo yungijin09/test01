@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리 반의 AI 사용 현황과 활용 방안</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif; /* Tailwind 기본 폰트 또는 필요시 Pretendard 적용 */
+            background-color: #F4F7F9;
+            color: #263238;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 768px;
+            margin: 20px auto;
+            height: 300px; /* 기본 높이 */
+            position: relative; /* 툴팁 위치 설정 기준 */
+        }
+        /* 필요에 따른 추가 스타일 */
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-700 mb-2">우리 반의 AI 사용 현황과 활용 방안</h1>
+            <p class="text-gray-600">미림마이스터고등학교 1학년 3반 | 2025년 5월 28일</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">조사 배경 및 목적</h2>
+                <p>최근 생성형 AI 서비스의 확산으로 AI 활용의 중요성이 커지고 있습니다. 이에 본 보고서는 미림마이스터고등학교 1학년 3반 학생들의 생성형 AI 이용 현황을 파악하고, 더 효율적인 활용 방안을 제시하고자 합니다.</p>
+            </section>
+
+            <section class="card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">조사 방법 및 절차</h2>
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700 mb-2">조사 대상</h3>
+                    <p>미림마이스터고등학교 1학년 3반 학생 전원</p>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700 mb-2">조사 내용</h3>
+                    <p>설문 조사: AI 사용 목적, 빈도, 활용 방식</p>
+                    <p>인터뷰: AI 활용 경험 학생 2인 심층 분석</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-2">조사 방법 및 기간</h3>
+                    <p>설문 조사: Google Forms 활용 (온라인)</p>
+                    <p>인터뷰: 개별 심층 인터뷰 진행</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">주요 설문 조사 결과</h2>
+
+                <div class="chart-container">
+                    <canvas id="usageOfAIResults"></canvas>
+                </div>
+                <p class="text-center text-gray-600 mt-2"><strong>그림 1. AI 결과물 활용 방식</strong><br>대부분의 학생들은 AI 결과물을 일부 수정하거나 아이디어 얻는 용도로 활용합니다.</p>
+
+                <div class="chart-container mt-8">
+                    <canvas id="purposeOfUsingAI"></canvas>
+                </div>
+                <p class="text-center text-gray-600 mt-2"><strong>그림 2. AI 사용 목적 (복수 응답)</strong><br>정보 탐색이 가장 주된 사용 목적이며, 학습, 과제, 아이디어 발상 등 다양한 학업 관련 활동에도 활용됩니다.</p>
+
+                <div class="chart-container mt-8">
+                    <canvas id="frequencyOfUsingAI"></canvas>
+                </div>
+                <p class="text-center text-gray-600 mt-2"><strong>그림 3. AI 챗봇 서비스 사용 빈도</strong><br>대부분의 학생들은 AI 챗봇 서비스를 보통 수준으로 사용하며, AI를 전혀 사용하지 않는 학생은 없습니다.</p>
+            </section>
+
+            <section class="card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">주요 인터뷰 결과</h2>
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700 mb-2">이서현 학생</h3>
+                    <p>AI 사용 빈도가 적으며, 주로 단순 질문이나 숙제 관련 질문을 하는 등 학습 도구보다는 챗봇이나 검색 도구로 활용하는 경향을 보입니다.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-2">노윤서 학생</h3>
+                    <p>AI를 적극적으로 활용하여 코드 디버깅, 오류 해결 등 전공 학습에 도움을 받고 있으며, 학습 루틴에도 AI를 포함하는 등 높은 활용도를 보입니다.</p>
+                </div>
+                <div class="mt-4">
+                    <h3 class="font-semibold text-gray-700 mb-2">종합 분석</h3>
+                    <p>AI 활용 수준에는 개인차가 크며, AI 활용 교육과 개인 맞춤형 접근 방식의 필요성을 시사합니다.</p>
+                    <div class="mt-4 p-4 bg-gray-100 rounded-md">
+                        <h4 class="font-semibold text-gray-700 mb-2">인터뷰 키워드 (워드 클라우드 형태)</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-block bg-blue-200 text-blue-700 px-2 py-1 rounded-full text-sm">학습</span>
+                            <span class="inline-block bg-teal-200 text-teal-700 px-2 py-1 rounded-full text-sm">전공</span>
+                            <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-sm">코드</span>
+                            <span class="inline-block bg-blue-200 text-blue-700 px-2 py-1 rounded-full text-sm">해결</span>
+                            <span class="inline-block bg-teal-200 text-teal-700 px-2 py-1 rounded-full text-sm">활용</span>
+                            <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-sm">질문</span>
+                            <span class="inline-block bg-blue-200 text-blue-700 px-2 py-1 rounded-full text-sm">도움</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-2">주요 키워드는 '학습', '전공', '코드', '해결' 등으로, 학생들이 AI를 학업 관련 문제 해결에 주로 활용함을 나타냅니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">결론 및 제언</h2>
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700 mb-2">결론</h3>
+                    <p>대다수 학생이 정보 탐색을 위해 AI를 활용하며, AI 사용 경험은 보편화되었습니다. 학생들은 AI 결과물을 비판적으로 수정하여 활용하며, 도구적 활용에 편중된 경향과 학습 도구로서의 활용 수준에 개인차가 존재합니다.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-2">제언 및 다짐</h3>
+                    <p>AI 활용 교육을 통해 다양한 활용 사례와 방법을 안내하고, 학생들이 AI를 자기계발, 창의적 사고 확장, 비판적 사고 훈련 도구로 활용하도록 장려해야 합니다. 본 조사를 통해 1학년 3반 학생들은 AI의 긍정적 영향을 인지하고, 앞으로 AI를 더욱 능동적이고 비판적으로 활용하여 학습 능력 향상 및 창의적 문제 해결에 기여할 것을 다짐합니다.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-8 text-gray-500">
+            <p>© 2025 미림마이스터고등학교 1학년 3반 공동 조사 보고서</p>
+        </footer>
+    </div>
+
+    <script>
+        // Data and configuration for the first chart (AI 결과물 활용 방식)
+        const usageData = {
+            labels: ['AI 결과물을 그대로 사용', 'AI 결과물을 일부 수정하여 사용', 'AI 결과물을 참고하여 완전히 새롭게 작성', 'AI 결과물을 아이디어 얻는 용도로만 활용', 'AI 결과물을 다른 정보와 비교/검증', '주로 AI와 대화하며 상호작용'],
+            datasets: [{
+                label: '응답 비율 (%)',
+                data: [5.9, 82.4, 23.5, 64.7, 29.4, 0],
+                backgroundColor: ['#2A62B6', '#4ECDC4', '#A9A9A9', '#E0F2FE', '#2A62B6', '#4ECDC4'],
+                borderColor: ['#2A62B6', '#4ECDC4', '#A9A9A9', '#E0F2FE', '#2A62B6', '#4ECDC4'],
+                borderWidth: 1
+            }]
+        };
+
+        const usageConfig = {
+            type: 'bar',
+            data: usageData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.formattedValue + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Create the first chart
+        const usageChart = new Chart(
+            document.getElementById('usageOfAIResults'),
+            usageConfig
+        );
+
+        // Data and configuration for the second chart (AI 사용 목적)
+        const purposeData = {
+            labels: ['공부 (학습 내용 이해, 문제 풀이 등)', '정보 탐색 (자료 조사, 최신 정보 확인 등)', '일상 대화 (심심풀이 대화, 감정 공유 등)', '콘텐츠 제작 (글쓰기, 이미지/영상 생성 아이디어 ,음악 작곡 등)', '프로그래밍/코딩 도움 (코드 작성,오류해결,개념 설명 등)', '번역/요약 (외국어 번역, 긴 글 요약 등)', '아이디어 발상 (과제, 프로젝트 등 아이디어 얻기)'],
+            datasets: [{
+                label: '응답 비율 (%)',
+                data: [58.8, 82.4, 23.5, 41.2, 35.2, 41.2, 64.7],
+                backgroundColor: '#2A62B6',
+                borderColor: '#2A62B6',
+                borderWidth: 1
+            }]
+        };
+
+        const purposeConfig = {
+            type: 'bar',
+            data: purposeData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                const maxLength = 16;
+                                const parts = [];
+                                for (let i = 0; i < value.length; i += maxLength) {
+                                    parts.push(value.substring(i, i + maxLength));
+                                }
+                                return parts;
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.formattedValue + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Create the second chart
+        const purposeChart = new Chart(
+            document.getElementById('purposeOfUsingAI'),
+            purposeConfig
+        );
+
+        // Data and configuration for the third chart (AI 사용 빈도)
+        const frequencyData = {
+            labels: ['아예 안 쓴다', '거의 쓰지 않는다', '보통이다', '많이 쓴다', '거의 매일 쓴다'],
+            datasets: [{
+                label: '응답 학생 수 (명)',
+                data: [0, 2, 10, 4, 1],
+                backgroundColor: ['#A9A9A9', '#E0F2FE', '#4ECDC4', '#2A62B6', '#263238'],
+                borderColor: ['#A9A9A9', '#E0F2FE', '#4ECDC4', '#2A62B6', '#263238'],
+                borderWidth: 1
+            }]
+        };
+
+        const frequencyConfig = {
+            type: 'pie',
+            data: frequencyData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.formattedValue + '명 (' + Math.round((context.dataset.data[context.dataIndex] / frequencyData.datasets[0].data.reduce((a, b) => a + b, 0)) * 100) + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Create the third chart
+        const frequencyChart = new Chart(
+            document.getElementById('frequencyOfUsingAI'),
+            frequencyConfig
+        );
+    </script>
+    </body>
+</html>
